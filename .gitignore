@@ -1,0 +1,22 @@
+# Compiled Python
+*.pyc
+
+# Input files
+*.inp
+
+# But allow for a small sample input
+!**Test_Small.inp
+
+# Swap files
+*~
+
+# Outputs
+*.npy
+*.png
+*.eps
+
+# Profiling
+*prof*
+
+# Ahmed's code
+Nonlinear FE code/*
