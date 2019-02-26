@@ -420,7 +420,7 @@ class Solver:
         None
         """
         
-        print "Reducing step size from %1.2g to %1.2g"%(self.dt, self.dt*ratio)
+        print("Reducing step size from %1.2g to %1.2g"%(self.dt, self.dt*ratio))
         self.t -= self.dt
             
         if self.dt > self.dt_min:
@@ -572,8 +572,8 @@ class Solver:
         else:
             corr_check = np.max(np.abs(du)) < self.ctol * np.max(np.abs(increment)) or np.max(abs(du)) < 1e-12
 
-        print "It: %i, Force: %i, Corr: %i"%(self.iter, force_check, corr_check)
-#        print "Time since last convergence check: %1.4g"%(time.time() - self.t0)
+        print("It: %i, Force: %i, Corr: %i"%(self.iter, force_check, corr_check))
+#        print("Time since last convergence check: %1.4g"%(time.time() - self.t0))
         self.t0 = time.time()
         return force_check and corr_check
     
@@ -613,8 +613,8 @@ class Solver:
         else:
             corr_check = np.max(np.abs(du)) < self.ctol * np.max(np.abs(increment)) or np.max(abs(du)) < 1e-12
 
-        print "It: %i, Force: %i, Corr: %i"%(self.iter, force_check, corr_check)
-#        print "Time since last convergence check: %1.4g"%(time.time() - self.t0)
+        print("It: %i, Force: %i, Corr: %i"%(self.iter, force_check, corr_check))
+#        print("Time since last convergence check: %1.4g"%(time.time() - self.t0))
         self.t0 = time.time()
         return force_check and corr_check
         
@@ -657,7 +657,7 @@ class Solver:
                     if np.max(self.brk[unbroken]) > max(3. - 0.1 * break_it, 1.):
                         ratio = 0.9*np.min(np.maximum(1 - brk[unbroken], 1e-16) /
                                            np.maximum(self.brk[unbroken] - brk[unbroken], 1e-16))
-                        print ratio
+                        print(ratio)
                         self.Reduce_Step(ratio=min(ratio,0.1))
                         break_it = 0
                         brk = self.brk.copy()
@@ -673,7 +673,7 @@ class Solver:
                     cnt_new = np.sum(self.brk < 1.)
                     
                     break_it += 1
-                    print break_it, cnt_new, np.max(self.brk[unbroken])
+                    print(break_it, cnt_new, np.max(self.brk[unbroken]))
                     if cnt_new == cnt_old:
                         break
             else:
@@ -683,7 +683,7 @@ class Solver:
 #                if ratio > 2:
 #                    self.dt *= min(min(ratio, 10), self.dt_max/self.dt)
                 
-            print "Time: ", self.t
+            print("Time: ", self.t)
                 
             self.Track['time'].append(self.t)
             for track in self.Track['data']:
@@ -714,6 +714,7 @@ class Solver:
         -------
         None
         """
+  
         if data is None:
             data = {'Displacements': self.u}
         for key in data.keys():

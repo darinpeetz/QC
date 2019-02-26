@@ -44,7 +44,7 @@ def Activate(line):
     elif line[:6].upper() == '*TRACK':
         active = 'track'
     else:
-        print "Unknown item in input file: %s"%line
+        print("Unknown item in input file: %s"%line)
     
     return active
     
